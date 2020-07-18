@@ -1,4 +1,5 @@
-## Building Artistic Paintings [Image Style Transfer]
+## Building Artistic Paintings 
+### Neural Style Transfer using PyTorch
 ----------
 
 ## Description
@@ -12,45 +13,45 @@ NST(Neural Style Transfer) works on the concept that a pretrained convolution ne
 
  Below are the various process for implemeting NST . The key points to be followed are:
 
-1. Loading Images and Applying transforms
-- 
+1. Loading Images and Applying transforms:
+   - Loading the content image and style image and resizing them for faster processing and converting them into Tensors.
 
-2. Loading the Pertrained VGG19 Model
-   - I have used pytorch for building the model.
-   - I used three models:-
-      1. The CNN model architecture consists of CNN Layer, Max Pooling, Flatten a Linear Layers.
-      2. Using Transfer learning VGG16 Architecture.
-      3. Using Transfer learning resnet34 Architecture.
+2. Loading the Pertrained VGG19 Model:
+   - Loading the Pretrained VGG19 model and freezing the layers so that no gradient computation or the update of gradients takes place.
+   - We only need the convolution layers of the model or the features layers as we are not training any classifier.
+   - As the model is already trained with large no of images we will be using its convolution layers to extract the content and style of the images using these convolution layers.
 
-3. Getting the content from differenet layers and creating gram matrix.
+3. Getting the content from differenet layers and creating gram matrix:
+   - To get the content of the image we need to pass through the various convolution layers of vgg model.
+   - Style refers to the colour and texture of present in the image. To get the style of an image we we find the correlation    between different conv layers which can be found by a gram matrix.
 
-   The model was trained  by  using variants of above layers mentioned in model building and by varying hyperparameters. The best model was able to achieve 98.42% of test accuracy.
 
-4. Initializing style weights and style and content weight
+4. Defining content and Style Loss, and Comparing it with target image:
+   - We define the content and target loss by comparing the content of the target image with content of the  content image and style loss by comparing the gram matrix of target and style image. 
 
-5. Defining content and Style Loss, and Comparing it with target image.
+5. Initializing style weights for each layers and style and content weight to balance the losses:
+   - We define style weights for each indvidual style layers.We give initial layers a higher value than lower layers.
 
-   The model was tested on total 17572 images of 38 classes.<br/>
-   The model used for prediction on sample images. It can be seen below:
-   <!-- <img src="" alt="index1" height="300px"/> -->
-   <div align="center">
-   <img src="./Assets/out1.png" alt="index2" height="300px" width="500"/>
-   <img src="./Assets/out2.png" alt="index3" height="300px"  width="500"/>
-   </div>
-6. Various Model Architecture tried along with Learning Rate and Optimizer and various accuracy obtained with different models.
- 
-  <img src="./Assets/models.png" alt="models" />
+   - We define weights for content weight(alpha) and style weight(beta) so that both maintain an equal balance between both losses.
+     Usually alpha is smaller and beta is larger. As beta increses we see more style in target image.  
 
+
+6. Various Content and Style images tried along with Learning Rate and Different values of weights:
+<center>
+  <img src="./Generated Images/house.jpg" alt="generated images" height="250"/>
+  <img src="./Generated Images/football.jpg" alt="generated images" height="250"/>
+  <img src="./Generated Images/girl_painting.jpg" alt="generated images" height="250"/>
+</center>
   
+
 
 ## Usage:
 
-### Code For Model Building and Training  
-   Refer to the notebook [Code](Src)  
+### Code for all the various combination tried:
+   - Combination of House and Paintings: [House-Painting](Image_Style_Transfer[Building].ipynb)
+   - Combination of Girl and Paintings: [Girl-Painting](Image_Style_Transfer[Girl].ipynb)
+   - Combination of Football and Paintings: [Footbal-Painting](Image_Style_Transfer[Football].ipynb)  
 
-### The reseach paper according to which this code has been implemented:-
-   Research Paper:- [https://github.com/soumyajit4419/Neural_Style_Transfer/tree/master/Paper](https://github.com/soumyajit4419/Neural_Style_Transfer/tree/master/Paper)
 
-
-## Explanation
-`To understand the code :` You  can find the complete explanation to the code in [Article](https://medium.com/@soumyajit4419/plant-ai-c8fc95ed90e6?source=friends_link&sk=4707825cbaefa2dcaaa92d0e3ed5de01)
+<!-- ## Explanation of the Code: -->
+<!-- `To understand the code :` You  can find the complete explanation to the code in [Article](https://medium.com/@soumyajit4419/plant-ai-c8fc95ed90e6?source=friends_link&sk=4707825cbaefa2dcaaa92d0e3ed5de01) -->
