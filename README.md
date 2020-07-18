@@ -21,7 +21,7 @@ NST(Neural Style Transfer) works on the concept that a pretrained convolution ne
    - We only need the convolution layers of the model or the features layers as we are not training any classifier.
    - As the model is already trained with large no of images we will be using its convolution layers to extract the content and style of the images using these convolution layers.
 
-3. Getting the content from differenet layers and creating gram matrix:
+3. Getting the content from different layers and creating gram matrix:
    - To get the content of the image we need to pass through the various convolution layers of vgg model.
    - Style refers to the colour and texture of present in the image. To get the style of an image we we find the correlation    between different conv layers which can be found by a gram matrix.
 
@@ -33,10 +33,10 @@ NST(Neural Style Transfer) works on the concept that a pretrained convolution ne
    - We define style weights for each indvidual style layers.We give initial layers a higher value than lower layers.
 
    - We define weights for content weight(alpha) and style weight(beta) so that both maintain an equal balance between both losses.
-     Usually alpha is smaller and beta is larger. As beta increses we see more style in target image.  
+     Usually alpha is smaller and beta is larger. As beta increases we see more style in target image.  
 
 
-6. Various Content and Style images tried along with Learning Rate and Different values of weights:
+6. Various Content and Style images tried along with different "Learning Rate" and Different values of "style and content weights":
 <div align="center">
   <img src="./Generated Images/house.jpg" alt="generated images" height="150"/>
   <img src="./Generated Images/football.jpg" alt="generated images" height="150"/>
