@@ -37,11 +37,12 @@ NST(Neural Style Transfer) works on the concept that a pretrained convolution ne
 
 
 6. Various Content and Style images tried along with Learning Rate and Different values of weights:
-<center>
-  <img src="./Generated Images/house.jpg" alt="generated images" height="250"/>
-  <img src="./Generated Images/football.jpg" alt="generated images" height="250"/>
-  <img src="./Generated Images/girl_painting.jpg" alt="generated images" height="250"/>
-</center>
+<div align="center">
+  <img src="./Generated Images/house.jpg" alt="generated images" height="150"/>
+  <img src="./Generated Images/football.jpg" alt="generated images" height="150"/>
+  <img src="./Generated Images/girl_painting.jpg" alt="generated images" height="150"/>
+</div>
+
   
 
 
